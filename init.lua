@@ -1,16 +1,30 @@
+local function get_venv_python_path()
+  local workspace_folder = vim.fn.getcwd()
+
+  if vim.fn.executable(workspace_folder .. "/.venv/bin/python") then
+    return workspace_folder .. "/.venv/bin/python"
+  elseif vim.fn.executable(workspace_folder .. "/venv/bin/python") then
+    return workspace_folder .. "/venv/bin/python"
+  elseif vim.fn.executable(os.getenv "VIRTUAL_ENV" .. "/bin/python") then
+    return os.getenv("VIRTUAL_ENV" .. "/bin/python")
+  else
+    return "/usr/bin/python"
+  end
+end
+
 return {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin",     -- remote to use
-    channel = "stable",    -- "stable" or "nightly"
-    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly",    -- branch name (NIGHTLY ONLY)
-    commit = nil,          -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false,  -- skip prompts about breaking changes
+    remote = "origin", -- remote to use
+    channel = "stable", -- "stable" or "nightly"
+    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly", -- branch name (NIGHTLY ONLY)
+    commit = nil, -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false,     -- automatically quit the current session after a successful update
-    remotes = {            -- easily add new remotes to track
+    auto_quit = false, -- automatically quit the current session after a successful update
+    remotes = { -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -32,7 +46,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
           "lua",
@@ -86,4 +100,90 @@ return {
     --   },
     -- }
   end,
+
+  -- plugins = {
+  --   {
+  --     "jay-babu/mason-nvim-dap.nvim",
+  --     opts = {
+  --       ensure_installed = {
+  --         -- Python Debugger: "debugpy",
+  --         "python",
+  --         -- JavaScript Debugger: "js-debug-adapter",
+  --         "js",
+  --       },
+  --     },
+  --   },
+  -- },
+  -- dap = {
+  --   adapters = {
+  --     python = {
+  --       type = "executable",
+  --       command = vim.fn.stdpath "data" .. "/mason/packages/debugpy/venv/bin/python",
+  --       args = { "-m", "debugpy.adapter" },
+  --     },
+  --   },
+  --   configurations = {
+  --     python = {
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Launch file",
+  --         program = "${file}",
+  --         pythonPath = function()
+  --           -- debugpy supports launching an application with a different
+  --           -- interpreter then the one used to launch debugpy itself.
+  --           -- The code below looks for a `venv` or `.venv` folder in the
+  --           -- current directly and uses the python within.
+  --           -- You could adapt this - to for example use the `VIRTUAL_ENV`
+  --           -- environment variable.
+  --           local workspace_folder = vim.fn.getcwd()
+  --
+  --           if vim.fn.executable(workspace_folder .. "/.venv/bin/python") then
+  --             return workspace_folder .. "/.venv/bin/python"
+  --           elseif vim.fn.executable(workspace_folder .. "/venv/bin/python") then
+  --             return workspace_folder .. "/venv/bin/python"
+  --           elseif vim.fn.executable(os.getenv "VIRTUAL_ENV" .. "/bin/python") then
+  --             return os.getenv("VIRTUAL_ENV" .. "/bin/python")
+  --           else
+  --             return "/usr/bin/python"
+  --           end
+  --         end,
+  --       },
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Launch file",
+  --         program = "${file}", -- This configuration will launch the current file if used.
+  --         pythonPath = get_venv_python_path(),
+  --       },
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Launch Django Server",
+  --         cwd = "${workspaceFolder}",
+  --         program = "${workspaceFolder}/manage.py",
+  --         args = {
+  --           "runserver",
+  --           "--noreload",
+  --         },
+  --         console = "integratedTerminal",
+  --         justMyCode = true,
+  --         pythonPath = get_venv_python_path(),
+  --       },
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Python: Django Debug Single Test",
+  --         program = "${workspaceFolder}/manage.py",
+  --         args = {
+  --           "test",
+  --           "${relativeFileDirname}",
+  --         },
+  --         django = true,
+  --         console = "integratedTerminal",
+  --         pythonPath = get_venv_python_path(),
+  --       },
+  --     },
+  --   },
+  -- },
 }

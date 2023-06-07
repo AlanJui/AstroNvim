@@ -16,7 +16,7 @@ return {
       ["<leader>x"] = { name = "+diagnostics/quickfix" },
       ["<leader>z"] = { name = "+system" },
     },
-  },
+  }
   config = function(_, opts)
     local wk = require "which-key"
     wk.setup(opts)

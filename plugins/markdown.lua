@@ -36,12 +36,11 @@ return {
   -- Preview markdown file
   {
     "iamcco/markdown-preview.nvim",
-    enabled = true,
+    build = "cd app && npm install",
     ft = { "markdown" },
     keys = {
       { "<leader>um", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Previewer" },
     },
-    build = "cd app && npm install",
     -- enabled = false,
     -- opts = function()
     --   vim.g.mkdp_filetypes = { "markdown" }
