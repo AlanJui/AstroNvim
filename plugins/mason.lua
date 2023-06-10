@@ -49,9 +49,12 @@ return {
         "pydocstyle",
         "flake8",
         "djlint",
+        "djhtml",
         "autopep8",
         -- Web
         "prettier",
+        -- Markdown
+        "markdownlint",
       })
     end,
   },
