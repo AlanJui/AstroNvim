@@ -40,6 +40,7 @@ return {
     ft = { "markdown" },
     keys = {
       { "<leader>um", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Previewer" },
+      { "<leader>Um", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Previewer" },
     },
     -- enabled = false,
     -- opts = function()
@@ -51,6 +52,7 @@ return {
     "weirongxu/plantuml-previewer.vim",
     keys = {
       { "<leader>uP", "<cmd>PlantumlToggle<cr>", desc = "Toggle PUML Previewer" },
+      { "<leader>UP", "<cmd>PlantumlToggle<cr>", desc = "Toggle PUML Previewer" },
     },
     config = function()
       vim.g.puml_jar_path = vim.fn.stdpath "data" .. "/lazy/plantuml-previewer.vim/lib/plantuml.jar"

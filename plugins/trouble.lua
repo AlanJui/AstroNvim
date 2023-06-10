@@ -1,8 +1,10 @@
+local utils = require "astronvim.utils"
+local get_icon = utils.get_icon
+
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
   keys = {
-    { "<leader>x", desc = "+Trouble" },
     { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
     { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
     { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
