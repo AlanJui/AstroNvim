@@ -10,6 +10,7 @@ return {
     swapfile = false, -- sets vim.opt.swapfile
     backup = false, -- sets vim.opt.backup
     writebackup = false, -- sets vim.opt.writebackup
+    clipboard = "unnamedplus", -- sets vim.opt.clipboard
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
