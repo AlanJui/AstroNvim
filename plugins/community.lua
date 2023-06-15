@@ -4,7 +4,8 @@ return {
   -- example of imporing a plugin, comment out to use it or add your own
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
-  { import = "astrocommunity.colorscheme.nightfox-nvim", enabled = false },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim", enabled = true },
+  { import = "astrocommunity.colorscheme.nightfox-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.rose-pine" },
   { import = "astrocommunity.colorscheme.catppuccin" },
