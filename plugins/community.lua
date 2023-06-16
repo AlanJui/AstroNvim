@@ -9,6 +9,7 @@ return {
   { import = "astrocommunity.colorscheme.kanagawa-nvim", enabled = true },
   { import = "astrocommunity.colorscheme.rose-pine" },
   { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.vscode-nvim" },
   { -- further customize the options set by the community
     "catppuccin",
     opts = {

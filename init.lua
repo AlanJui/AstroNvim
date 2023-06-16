@@ -32,10 +32,10 @@ return {
   },
 
   -- Set colorscheme to use
+  colorscheme = "nightfly",
   -- colorscheme = "astrodark",
-  -- colorscheme = "nightfly",
   -- colorscheme = "tokyonight",
-  colorscheme = "nightfox",
+  -- colorscheme = "nightfox",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
