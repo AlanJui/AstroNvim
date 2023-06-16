@@ -36,7 +36,6 @@ return {
         ["U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utils" },
         ["r"] = { name = get_icon("DiagnosticHint", 1, true) .. "Run" },
         ["x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
-        ["ct"] = { name = "TreeSJ" },
         ["rd"] = { name = "Django" },
         ["rp"] = { name = "Python" },
       }, { mode = "n", prefix = "<leader>" })

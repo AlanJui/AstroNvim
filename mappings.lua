@@ -23,6 +23,12 @@ return {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
+    ["<leader>ct"] = { name = "Tree Split/Join" },
+    ["<leader>co"] = { name = "Code Outline" },
+    ["<leader>cot"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Outline Window" },
+    ["<leader>coo"] = { "<cmd>AerialOpen<CR>", desc = "Open Outline Window" },
+    ["<leader>con"] = { "<cmd>AerialNext<CR>", desc = "Jump forwards 1 symbols" },
+    ["<leader>cop"] = { "<cmd>AerialPrev<CR>", desc = "Jump backwards 1 symbols" },
   },
   t = {
     -- setting a mapping to false will disable it

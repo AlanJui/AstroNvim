@@ -72,6 +72,15 @@ return {
     servers = {
       -- "pyright"
     },
+    config = {
+      lua_ls = {
+        settings = {
+          diagnostics = {
+            globals = { "vim", "hs" },
+          },
+        },
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options
