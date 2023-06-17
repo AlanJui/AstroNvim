@@ -1,17 +1,3 @@
-local function get_venv_python_path()
-  local workspace_folder = vim.fn.getcwd()
-
-  if vim.fn.executable(workspace_folder .. "/.venv/bin/python") then
-    return workspace_folder .. "/.venv/bin/python"
-  elseif vim.fn.executable(workspace_folder .. "/venv/bin/python") then
-    return workspace_folder .. "/venv/bin/python"
-  elseif vim.fn.executable(os.getenv "VIRTUAL_ENV" .. "/bin/python") then
-    return os.getenv("VIRTUAL_ENV" .. "/bin/python")
-  else
-    return "/usr/bin/python"
-  end
-end
-
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -41,46 +27,6 @@ return {
   diagnostics = {
     virtual_text = true,
     underline = true,
-  },
-
-  lsp = {
-    -- customize lsp formatting options
-    formatting = {
-      -- control auto formatting on save
-      format_on_save = {
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          "go",
-          "lua",
-          "python",
-          "html",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-        },
-      },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        "lua_ls",
-      },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
-    },
-    -- enable servers that you already have installed without mason
-    servers = {
-      -- "pyright"
-    },
-    config = {
-      lua_ls = {
-        settings = {
-          diagnostics = {
-            globals = { "vim", "hs" },
-          },
-        },
-      },
-    },
   },
 
   -- Configure require("lazy").setup() options
