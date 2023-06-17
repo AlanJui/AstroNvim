@@ -4,7 +4,12 @@ return {
     dependencies = {
       {
         "vifm/vifm.vim",
-        cmd = { "Vifm", },
+        cmd = { "Vifm" },
+        keys = {
+          { "<leader>fv", "<cmd>Vifm<cr>", desc = "ViFm" },
+          { "<leader>Uv", "<cmd>Vifm<cr>", desc = "ViFm" },
+        },
+        event = "User AstroFile",
       },
     },
     keys = {
@@ -19,11 +24,11 @@ return {
         "<cmd>lua _G.lazygit_toggle()<cr>",
         desc = "LazyGit",
       },
-      {
-        "<leader>fv",
-        "<cmd>Vifm<cr>",
-        desc = "ViFm",
-      },
+      -- {
+      --   "<leader>fv",
+      --   "<cmd>Vifm<cr>",
+      --   desc = "ViFm",
+      -- },
       {
         "<leader>gS",
         ":2TermExec cmd='git status'<cr>",
@@ -33,13 +38,13 @@ return {
     cmd = { "ToggleTerm", "TermExec" },
     opts = {
       size = 20,
-      hide_numbers = true, -- hide the number column in toggleterm buffers
+      hide_numbers = true,      -- hide the number column in toggleterm buffers
       shade_filetypes = {},
-      autochdir = false, -- when neovim changes it current directory the terminal will change it's own when next it's opened
-      shade_terminals = true, -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
-      shading_factor = "0.3", -- the percentage by which to lighten terminal background, default: -30 (gets multiplied by -3 if background is light)
+      autochdir = false,        -- when neovim changes it current directory the terminal will change it's own when next it's opened
+      shade_terminals = true,   -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
+      shading_factor = "0.3",   -- the percentage by which to lighten terminal background, default: -30 (gets multiplied by -3 if background is light)
       start_in_insert = true,
-      insert_mappings = true, -- whether or not the open mapping applies in insert mode
+      insert_mappings = true,   -- whether or not the open mapping applies in insert mode
       terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
       direction = "float",
       shell = vim.o.shell,
@@ -50,7 +55,7 @@ return {
 
       local Terminal = require("toggleterm.terminal").Terminal
 
-      local lazygit = Terminal:new({
+      local lazygit = Terminal:new {
         cmd = "lazygit",
         dir = "git_dir",
         direction = "float",
@@ -60,21 +65,21 @@ return {
         -- function to run on opening the terminal
         ---@diagnostic disable-next-line: unused-local
         on_open = function(term)
-          vim.cmd("startinsert!")
+          vim.cmd "startinsert!"
           vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<cr>", { noremap = true, silent = true })
         end,
         -- function to run on closing the terminal
         ---@diagnostic disable-next-line: unused-local
         on_close = function(term)
-          vim.cmd("startinsert!")
+          vim.cmd "startinsert!"
         end,
-      })
+      }
 
       function _G.lazygit_toggle()
         lazygit:toggle()
       end
 
-      vim.cmd([[
+      vim.cmd [[
       " set
       autocmd TermEnter term://*toggleterm#*
       \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
@@ -84,7 +89,7 @@ return {
       " For example: 2<C-t> will open terminal 2
       nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
       inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-      ]])
+      ]]
 
       function _G.set_terminal_keymaps()
         local opts = { buffer = 0 }
@@ -98,7 +103,7 @@ return {
       end
 
       -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-      vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+      vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
     end,
   },
 }

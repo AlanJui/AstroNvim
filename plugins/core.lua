@@ -28,14 +28,14 @@ return {
   {
     "folke/which-key.nvim",
     config = function(plugin, opts)
-      require "plugins.configs.which-key"(plugin, opts) -- include the default astronvim config that calls the setup call
+      require "plugins.configs.which-key" (plugin, opts) -- include the default astronvim config that calls the setup call
       -- Add bindings which show up as group name
       local wk = require "which-key"
       wk.register({ mode = "n", prefix = "<leader>" }, {
-        ["c"] = { name = get_icon("DiagnosticHint", 1, true) .. "Code" },
-        ["U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utils" },
-        ["r"] = { name = get_icon("DiagnosticHint", 1, true) .. "Run" },
-        ["x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
+        -- ["c"] = { name = get_icon("DiagnosticHint", 1, true) .. "Code" },
+        -- ["U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utils" },
+        -- ["r"] = { name = get_icon("DiagnosticHint", 1, true) .. "Run" },
+        -- ["x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
       })
     end,
   },

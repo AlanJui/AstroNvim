@@ -6,7 +6,7 @@ return {
       { "<leader>rg", ":2TermExec cmd='git status'<CR>", desc = "git status" },
       -- Lua Script
       {
-        "<leader>rlr",
+        "<leader>rl",
         ":TermExec direction=horizontal cmd='lua %'<CR>",
         desc = "Run current lua file",
       },

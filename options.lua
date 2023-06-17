@@ -1,10 +1,3 @@
-vim.g.loaded_python2_provider = 0
-vim.g.loaded_python3_provider = 1
-vim.g.python3_host_prog = os.getenv "VIRTUAL_ENV" .. "/bin/python"
-vim.g.node_host_prog = os.getenv "HOME" .. "/n/lib/node_modules/neovim/bin/cli.js"
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
-
 -- set vim options here (vim.<first_key>.<second_key> = value)
 return {
   opt = {
@@ -28,6 +21,12 @@ return {
     icons_enabled = true,            -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
     resession_enabled = false,       -- enable experimental resession.nvim session management (will be default in AstroNvim v4)
+    loaded_python2_provider = 0,
+    loaded_python3_provider = 1,
+    python3_host_prog = os.getenv "VIRTUAL_ENV" .. "/bin/python",
+    node_host_prog = os.getenv "HOME" .. "/n/lib/node_modules/neovim/bin/cli.js",
+    loaded_ruby_provider = 0,
+    loaded_perl_provider = 0,
   },
 }
 -- If you need more control, you can use the function()...end notation

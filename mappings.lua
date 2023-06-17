@@ -10,6 +10,8 @@ local get_icon = utils.get_icon
 return {
   -- first key is the mode
   n = {
+    -- disable default bindings
+    ["<leader>c"] = false,
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
@@ -38,9 +40,9 @@ return {
     -- ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<leader>c"] = { name = get_icon("DiagnosticHint", 1, true) .. "Code" },
-    ["<leader>co"] = { name = "Code Outline" },
-    ["<leader>ct"] = { name = "Tree Split/Join" },
+    ["<leader>L"] = { name = get_icon("ActiveLSP", 1, true) .. "Coding Tools" },
+    ["<leader>Lo"] = { name = "Code Outline" },
+    ["<leader>Lt"] = { name = "Tree Split/Join" },
     ["<leader>r"] = { name = get_icon("DiagnosticHint", 1, true) .. "Run/Build Code" },
     ["<leader>rd"] = { name = "Django" },
     ["<leader>rp"] = { name = "Python" },
