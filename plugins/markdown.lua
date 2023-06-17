@@ -48,7 +48,7 @@ return {
     ft = { "markdown" },
     cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
     keys = {
-      { "<leader>um", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Previewer" },
+      { "<leader>Um", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Previewer" },
     },
     setup = function()
       vim.cmd [[
@@ -97,8 +97,7 @@ return {
     },
     cmd = { "PlantumlOpen", "PlantumlSave", "PlantumlToggle" },
     keys = {
-      { "<leader>uP", "<cmd>PlantumlToggle<cr>", desc = "Toggle PUML Previewer" },
-      { "<leader>UP", "<cmd>PlantumlToggle<cr>", desc = "Toggle PUML Previewer" },
+      { "<leader>Up", "<cmd>PlantumlToggle<cr>", desc = "Toggle PUML Previewer" },
     },
     config = function()
       vim.g.my_jar_path = vim.fn.stdpath "data" .. "/lazy/plantuml-previewer.vim/lib/plantuml.jar"

@@ -8,7 +8,7 @@ return {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
   config = function()
-    require("treesj").setup {--[[ your config ]]
+    require("treesj").setup { --[[ your config ]]
     }
   end,
 }

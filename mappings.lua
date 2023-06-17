@@ -3,6 +3,10 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+
+local utils = require "astronvim.utils"
+local get_icon = utils.get_icon
+
 return {
   -- first key is the mode
   n = {
@@ -17,18 +21,32 @@ return {
       end,
       desc = "Pick to close",
     },
+    ["<leader>bq"] = {
+      function()
+        require("astronvim.utils.buffer").close()
+      end,
+      desc = "Close buffer",
+    },
+    ["<leader>bQ"] = {
+      function()
+        require("astronvim.utils.buffer").close(0, true)
+      end,
+      desc = "Force close buffer",
+    },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
+    -- ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
-    ["<leader>ct"] = { name = "Tree Split/Join" },
+    ["<leader>c"] = { name = get_icon("DiagnosticHint", 1, true) .. "Code" },
     ["<leader>co"] = { name = "Code Outline" },
-    ["<leader>cot"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Outline Window" },
-    ["<leader>coo"] = { "<cmd>AerialOpen<CR>", desc = "Open Outline Window" },
-    ["<leader>con"] = { "<cmd>AerialNext<CR>", desc = "Jump forwards 1 symbols" },
-    ["<leader>cop"] = { "<cmd>AerialPrev<CR>", desc = "Jump backwards 1 symbols" },
+    ["<leader>ct"] = { name = "Tree Split/Join" },
+    ["<leader>r"] = { name = get_icon("DiagnosticHint", 1, true) .. "Run/Build Code" },
+    ["<leader>rd"] = { name = "Django" },
+    ["<leader>rp"] = { name = "Python" },
+    ["<leader>x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
+    ["<leader>U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utilities" },
+    -- ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
   },
   t = {
     -- setting a mapping to false will disable it
