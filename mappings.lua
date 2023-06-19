@@ -11,6 +11,7 @@ return {
   -- first key is the mode
   n = {
     -- <Esc>
+    ["<leader><leader>"] = { "<c-^>", desc = "Quick Switch 2 Buffers" }, -- Switch between 2 buffers
     ["jk"] = { "<Esc>", desc = "Escape" },
     -- Move Line
     ["<A-j>"] = { ":m .+1<CR>==" },
@@ -42,6 +43,13 @@ return {
     -- disable default bindings
     -- ["<leader>c"] = false,
     -- second key is the lefthand side of the map
+    ["<leader>a"] = { name = get_icon("ActiveLSP", 1, true) .. "Actions" },
+    ["<leader>ah"] = { ':let @/ = ""<CR>', desc = "remove search highlight" },
+    ["<leader>at"] = { ":set filetype=htmldjango<CR>", desc = "set file type to django template" },
+    ["<leader>aT"] = { ":set filetype=html<CR>", desc = "set file type to HTML" },
+    ["<leader>al"] = { ":set wrap!<CR>", desc = "on/off line wrap" },
+    ["<leader>an"] = { ":set nonumber!<CR>", desc = "on/off line-numbers" },
+    ["<leader>aN"] = { ":set norelativenumber!<CR>", desc = "on/off relative line-numbers" },
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
