@@ -10,6 +10,35 @@ local get_icon = utils.get_icon
 return {
   -- first key is the mode
   n = {
+    -- <Esc>
+    ["jk"] = { "<Esc>", desc = "Escape" },
+    -- Move Line
+    ["<A-j>"] = { ":m .+1<CR>==" },
+    ["<A-k>"] = { ":m .-2<CR>==" },
+    -- Move to window using the <ctrl> hjkl keys
+    ["<C-h>"] = { "<C-w>h" },
+    ["<C-j>"] = { "<C-w>j" },
+    ["<C-k>"] = { "<C-w>k" },
+    ["<C-l>"] = { "<C-w>l" },
+    -- Resize window using <Alt> arrow keys
+    ["<A-Up>"] = { "<cmd>resize -2<CR>" },
+    ["<A-Down>"] = { "<cmd>resize +2<CR>" },
+    ["<A-Left>"] = { "<cmd>vertical resize +2<CR>" },
+    ["<A-Right>"] = { "<cmd>vertical resize -2<CR>" },
+    -- Editing Tools
+    ["<leader>uo"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
+    -- ["<leader>uT"] = { "<cmd>TSJToggle<CR>", desc = "Split/Join Tree Node" },
+    -- ["<leader>uT"] = { "<cmd>lua require('treesj').toggle()<CR>", desc = "Split/Join Tree Node" },
+    -- ["<leader>uT"] = {
+    --   function ()
+    --     require('treesj').toggle({ split = { recursive=true } })
+    --   end,
+    --   desc = "Split/Join Tree Node",
+    -- },
+    ["<leader>uT"] = {
+      require("treesj").toggle,
+      desc = "Split/Join Tree Node",
+    },
     -- disable default bindings
     -- ["<leader>c"] = false,
     -- second key is the lefthand side of the map
@@ -49,6 +78,19 @@ return {
     ["<leader>x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
     ["<leader>U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utilities" },
     -- ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
+  },
+  v = {
+    -- Move Line
+    ["<A-j>"] = { ":m '>+1<CR>gv=gv" },
+    ["<A-k>"] = { ":m '<-2<CR>gv=gv" },
+    -- Better indent
+    ["<"] = { "<gv", desc = "Indent Left" },
+    [">"] = { ">gv", desc = "Indent Right" },
+  },
+  i = {
+    -- Move Line
+    ["<A-j>"] = { "<Esc>:m .+1<CR>==gi" },
+    ["<A-k>"] = { "<Esc>:m .-2<CR>==gi" },
   },
   t = {
     -- setting a mapping to false will disable it

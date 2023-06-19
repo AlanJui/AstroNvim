@@ -1,4 +1,5 @@
 -- set vim options here (vim.<first_key>.<second_key> = value)
+local python_dir_path = os.getenv "VIRTUAL_ENV" or (os.getenv "HOME" .. "/.pyenv/versions/venv-3.10.6")
 return {
   opt = {
     -- set to true or false etc.
@@ -23,7 +24,7 @@ return {
     resession_enabled = false,       -- enable experimental resession.nvim session management (will be default in AstroNvim v4)
     loaded_python2_provider = 0,
     loaded_python3_provider = 1,
-    python3_host_prog = os.getenv "VIRTUAL_ENV" .. "/bin/python",
+    python3_host_prog = python_dir_path .. "/bin/python",
     node_host_prog = os.getenv "HOME" .. "/n/lib/node_modules/neovim/bin/cli.js",
     loaded_ruby_provider = 0,
     loaded_perl_provider = 0,
