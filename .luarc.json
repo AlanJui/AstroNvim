@@ -75,5 +75,6 @@
         "/Users/alanjui/.local/share/nvim/lazy/alpha-nvim/lua",
         "/Users/alanjui/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

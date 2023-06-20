@@ -7,6 +7,19 @@
 local utils = require "astronvim.utils"
 local get_icon = utils.get_icon
 
+local sections = {
+  f = { desc = get_icon("Search", 1, true) .. "Find" },
+  p = { desc = get_icon("Package", 1, true) .. "Packages" },
+  l = { desc = get_icon("ActiveLSP", 1, true) .. "LSP" },
+  u = { desc = get_icon("Window", 1, true) .. "UI" },
+  b = { desc = get_icon("Tab", 1, true) .. "Buffers" },
+  bs = { desc = get_icon("Sort", 1, true) .. "Sort Buffers" },
+  d = { desc = get_icon("Debugger", 1, true) .. "Debugger" },
+  g = { desc = get_icon("Git", 1, true) .. "Git" },
+  S = { desc = get_icon("Session", 1, true) .. "Session" },
+  t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
+}
+
 return {
   -- first key is the mode
   n = {
@@ -50,6 +63,7 @@ return {
     ["<leader>al"] = { ":set wrap!<CR>", desc = "on/off line wrap" },
     ["<leader>an"] = { ":set nonumber!<CR>", desc = "on/off line-numbers" },
     ["<leader>aN"] = { ":set norelativenumber!<CR>", desc = "on/off relative line-numbers" },
+    ["<leader>ao"] = { utils.system_open, desc = "Open the file under cursor with system app" },
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
@@ -86,6 +100,93 @@ return {
     ["<leader>x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
     ["<leader>U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utilities" },
     -- ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
+    -- Git
+    ["<leader>g"] = sections.g,
+    ["<leader>ga"] = { "echo Git!!", desc = "顯示 Git" },
+    ["]g"] = {
+      function()
+        require("gitsigns").next_hunk()
+      end,
+      desc = "Next Git hunk",
+    },
+    ["[g"] = {
+      function()
+        require("gitsigns").prev_hunk()
+      end,
+      desc = "Previous Git hunk",
+    },
+    ["<leader>gl"] = {
+      function()
+        require("gitsigns").blame_line()
+      end,
+      desc = "View Git blame",
+    },
+    ["<leader>gL"] = {
+      function()
+        require("gitsigns").blame_line { full = true }
+      end,
+      desc = "View full Git blame",
+    },
+    ["<leader>gp"] = {
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      desc = "Preview Git hunk",
+    },
+    ["<leader>gh"] = {
+      function()
+        require("gitsigns").reset_hunk()
+      end,
+      desc = "Reset Git hunk",
+    },
+    ["<leader>gr"] = {
+      function()
+        require("gitsigns").reset_buffer()
+      end,
+      desc = "Reset Git buffer",
+    },
+    ["<leader>gs"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      desc = "Stage Git hunk",
+    },
+    ["<leader>gS"] = {
+      function()
+        require("gitsigns").stage_buffer()
+      end,
+      desc = "Stage Git buffer",
+    },
+    ["<leader>gu"] = {
+      function()
+        require("gitsigns").undo_stage_hunk()
+      end,
+      desc = "Unstage Git hunk",
+    },
+    ["<leader>gd"] = {
+      function()
+        require("gitsigns").diffthis()
+      end,
+      desc = "View Git diff",
+    },
+    -- Window
+    ["<leader>w"] = { name = "", desc = get_icon("Window", 1, true) .. "Window" },
+    -- split window
+    ["<leader>w-"] = { "<cmd>split<cr>", desc = "Horizontal Split" },
+    ["<leader>w_"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" },
+    ["<leader>w|"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" },
+    -- Move to window using the <ctrl> hjkl keys
+    ["<leader>wm"] = { desc = "Move to Window" },
+    ["<leader>wmh"] = { "<C-w>h", desc = "Move to Left Window" },
+    ["<leader>wmj"] = { "<C-w>j", desc = "Move to Down Window" },
+    ["<leader>wmk"] = { "<C-w>k", desc = "Move to Up Window" },
+    ["<leader>wml"] = { "<C-w>l", desc = "Move to Right Window" },
+    -- Resize window using <Alt> arrow keys
+    ["<leader>ws"] = { desc = "Resize Window" },
+    ["<leader>ws<Up>"] = { "<cmd>resize -2<CR>", desc = "Up Side" },
+    ["<leader>ws<Down>"] = { "<cmd>resize +2<CR>", desc = "Down Side" },
+    ["<leader>ws<Left>"] = { "<cmd>vertical resize +2<CR>", desc = "Left Side" },
+    ["<leader>ws<Right>"] = { "<cmd>vertical resize -2<CR>", desc = "Right Side" },
   },
   v = {
     -- Move Line
