@@ -169,6 +169,8 @@ return {
       end,
       desc = "View Git diff",
     },
+    -- Utilities
+    ["<leader>Ub"] = { "<cmd>luafile " .. "~/.config/nvim/lua/user/my_libs/piau_im.lua<CR>", desc = "Blogger 工具" },
     -- Window
     ["<leader>w"] = { name = "", desc = get_icon("Window", 1, true) .. "Window" },
     -- split window
