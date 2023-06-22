@@ -23,7 +23,8 @@ local sections = {
 return {
   -- first key is the mode
   n = {
-    -- <Esc>
+    -- 常用指令
+    ["<leader>,"] = { ":Telescope buffers<CR>", desc = "Show buffers" },
     ["<leader><leader>"] = { "<c-^>", desc = "Quick Switch 2 Buffers" }, -- Switch between 2 buffers
     ["jk"] = { "<Esc>", desc = "Escape" },
     -- Move Line
