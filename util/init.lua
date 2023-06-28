@@ -1,4 +1,4 @@
-local Util = require("lazy.core.util")
+local Util = require "lazy.core.util"
 
 local M = {}
 
@@ -87,7 +87,7 @@ function M.opts(name)
   if not plugin then
     return {}
   end
-  local Plugin = require("lazy.core.plugin")
+  local Plugin = require "lazy.core.plugin"
   return Plugin.values(plugin, "opts", false)
 end
 
@@ -104,7 +104,7 @@ function M.get_root()
   ---@type string[]
   local roots = {}
   if path then
-    for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+    for _, client in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
       local workspace = client.config.workspace_folders
       local paths = workspace and vim.tbl_map(function(ws)
         return vim.uri_to_fname(ws.uri)

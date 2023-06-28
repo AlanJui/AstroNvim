@@ -170,8 +170,38 @@ return {
       end,
       desc = "View Git diff",
     },
+    ["<leader>Ub"] = { name = "Lua 工具箱" },
+    -- Test
+    ["<leader>Ub1"] = {
+      "<cmd>luafile ~/.config/nvim/lua/user/my_libs/api_get.lua<CR>",
+      desc = "Test API: GET",
+    },
+    ["<leader>Ub2"] = {
+      "<cmd>luafile ~/.config/nvim/lua/user/my_libs/huan_tshiat_tsa_tak_im.lua<CR>",
+      desc = "Test API: GET /huat_tshiat_tsa_tak_im",
+    },
+    ["<leader>Ubl"] = {
+      "<cmd>Telescope file_browser cwd='~/.config/nvim/lua/user/my_libs'<CR>",
+      desc = "瀏覽檔案",
+    },
+    ["<leader>UbL"] = {
+      function()
+        require("telescope.builtin").find_files {
+          cwd = "~/.config/nvim/lua/user/my-libs/",
+          attach_mappings = function(prompt_bufnr)
+            local entry = require("telescope.actions.state").get_selected_entry()
+            require("telescope.actions").close(prompt_bufnr)
+            vim.cmd(":luafile " .. entry.path)
+          end,
+        }
+      end,
+      desc = "瀏覽及選用工具",
+    },
     -- Utilities
-    ["<leader>Ub"] = { "<cmd>luafile " .. "~/.config/nvim/lua/user/my_libs/piau_im.lua<CR>", desc = "Blogger 工具" },
+    ["<leader>Ubb"] = {
+      "<cmd>luafile " .. "~/.config/nvim/lua/user/my_libs/piau_im.lua<CR>",
+      desc = "Blogger 工具",
+    },
     -- Window
     ["<leader>w"] = { name = "", desc = get_icon("Window", 1, true) .. "Window" },
     -- split window
