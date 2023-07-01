@@ -36,10 +36,10 @@ return {
     ["<C-k>"] = { "<C-w>k" },
     ["<C-l>"] = { "<C-w>l" },
     -- Resize window using <Alt> arrow keys
-    ["<A-Up>"] = { "<cmd>resize -2<CR>" },
-    ["<A-Down>"] = { "<cmd>resize +2<CR>" },
-    ["<A-Left>"] = { "<cmd>vertical resize +2<CR>" },
-    ["<A-Right>"] = { "<cmd>vertical resize -2<CR>" },
+    ["<A-Down>"] = { "<cmd>resize -2<CR>" },
+    ["<A-Up>"] = { "<cmd>resize +2<CR>" },
+    ["<A-Left>"] = { "<cmd>vertical resize -2<CR>" },
+    ["<A-Right>"] = { "<cmd>vertical resize +2<CR>" },
     -- Editing Tools
     ["<leader>uo"] = { "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
     -- ["<leader>uT"] = { "<cmd>TSJToggle<CR>", desc = "Split/Join Tree Node" },
