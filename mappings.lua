@@ -209,17 +209,21 @@ return {
     ["<leader>w_"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" },
     ["<leader>w|"] = { "<cmd>vsplit<cr>", desc = "Vertical Split" },
     -- Move to window using the <ctrl> hjkl keys
-    ["<leader>wm"] = { desc = "Move to Window" },
-    ["<leader>wmh"] = { "<C-w>h", desc = "Move to Left Window" },
-    ["<leader>wmj"] = { "<C-w>j", desc = "Move to Down Window" },
-    ["<leader>wmk"] = { "<C-w>k", desc = "Move to Up Window" },
-    ["<leader>wml"] = { "<C-w>l", desc = "Move to Right Window" },
+    ["<leader>wf"] = { desc = "Move Focus" },
+    ["<leader>wfh"] = { "<C-w>h", desc = "Move to Left Window" },
+    ["<leader>wfj"] = { "<C-w>j", desc = "Move to Down Window" },
+    ["<leader>wfk"] = { "<C-w>k", desc = "Move to Up Window" },
+    ["<leader>wfl"] = { "<C-w>l", desc = "Move to Right Window" },
     -- Resize window using <Alt> arrow keys
     ["<leader>ws"] = { desc = "Resize Window" },
     ["<leader>ws<Up>"] = { "<cmd>resize -2<CR>", desc = "Up Side" },
     ["<leader>ws<Down>"] = { "<cmd>resize +2<CR>", desc = "Down Side" },
     ["<leader>ws<Left>"] = { "<cmd>vertical resize +2<CR>", desc = "Left Side" },
     ["<leader>ws<Right>"] = { "<cmd>vertical resize -2<CR>", desc = "Right Side" },
+    -- Zoom-in/out window
+    ["<leader>wi"] = { ":tabnew %<CR>", desc = "Zoom-in" },
+    ["<leader>wo"] = { ":tabclose<CR>", desc = "Zoom-out" },
+    ["<leader>wc"] = { ":close<CR>", desc = "Close window" },
   },
   v = {
     -- Move Line
