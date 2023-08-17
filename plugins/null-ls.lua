@@ -8,9 +8,28 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     config.sources = {
       null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.prettier,
+      -- null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.prettier.with {
+        filetypes = {
+          -- "yaml",
+          "html",
+          "css",
+          "scss",
+          "less",
+          "javascript",
+          "typescript",
+          "vue",
+          "json",
+          "jsonc",
+          "markdown",
+          "handlebars",
+        },
+        extra_filetypes = {},
+      },
       null_ls.builtins.diagnostics.pylint.with {
-        diagnostics_postprocess = function(diagnostic) diagnostic.code = diagnostic.message_id end,
+        diagnostics_postprocess = function(diagnostic)
+          diagnostic.code = diagnostic.message_id
+        end,
       },
       null_ls.builtins.formatting.isort,
       -- null_ls.builtins.formatting.black,

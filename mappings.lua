@@ -20,6 +20,19 @@ local sections = {
   t = { desc = get_icon("Terminal", 1, true) .. "Terminal" },
 }
 
+vim.cmd [[
+  set listchars=tab:>-
+  set list
+]]
+
+function _G.toggle_tab_chars()
+  if vim.opt.list:get() then
+    vim.opt.list = false
+  else
+    vim.opt.list = true
+  end
+end
+
 return {
   -- first key is the mode
   n = {
@@ -169,6 +182,10 @@ return {
         require("gitsigns").diffthis()
       end,
       desc = "View Git diff",
+    },
+    ["<leader>ut"] = {
+      "<cmd>lua _G.toggle_tab_chars()<CR>",
+      desc = "啟用／關閉：顯示 Tab 字符",
     },
     ["<leader>Ub"] = { name = "Lua 工具箱" },
     -- Test
