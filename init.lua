@@ -18,7 +18,8 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "nightfly",
+  colorscheme = "catppuccin",
+  -- colorscheme = "nightfly",
   -- colorscheme = "astrodark",
   -- colorscheme = "tokyonight",
   -- colorscheme = "nightfox",
