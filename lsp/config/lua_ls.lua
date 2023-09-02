@@ -1,5 +1,5 @@
 -- 宣告模組（Module）搜尋路徑
-local project_path = "~/workspace/lua/my_lua01/"
+-- local project_path = "~/workspace/lua/my_lua01/"
 
 return {
   settings = {

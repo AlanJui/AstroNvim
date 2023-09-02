@@ -34,9 +34,15 @@ function _G.toggle_tab_chars()
 end
 
 return {
-  -- first key is the mode
   n = {
+    --------------------------------------------------------------------------
+    -- setting a mapping to false will disable it
+    --------------------------------------------------------------------------
+    -- quick save
+    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    --------------------------------------------------------------------------
     -- 常用指令
+    --------------------------------------------------------------------------
     ["<leader>,"] = { ":Telescope buffers<CR>", desc = "Show buffers" },
     ["<leader><leader>"] = { "<c-^>", desc = "Quick Switch 2 Buffers" }, -- Switch between 2 buffers
     ["jk"] = { "<Esc>", desc = "Escape" },
@@ -67,9 +73,6 @@ return {
       require("treesj").toggle,
       desc = "Split/Join Tree Node",
     },
-    -- disable default bindings
-    -- ["<leader>c"] = false,
-    -- second key is the lefthand side of the map
     ["<leader>a"] = { name = get_icon("ActiveLSP", 1, true) .. "Actions" },
     ["<leader>ah"] = { ':let @/ = ""<CR>', desc = "remove search highlight" },
     ["<leader>at"] = { ":set filetype=htmldjango<CR>", desc = "set file type to django template" },
@@ -78,7 +81,9 @@ return {
     ["<leader>an"] = { ":set nonumber!<CR>", desc = "on/off line-numbers" },
     ["<leader>aN"] = { ":set norelativenumber!<CR>", desc = "on/off relative line-numbers" },
     ["<leader>ao"] = { utils.system_open, desc = "Open the file under cursor with system app" },
-    -- mappings seen under group name "Buffer"
+
+    --------------------------------------------------------------------------
+    ["<leader>b"] = { name = "Buffers" },
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -100,9 +105,8 @@ return {
       end,
       desc = "Force close buffer",
     },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    -- ["<leader>b"] = { name = "Buffers" },
+
+    --------------------------------------------------------------------------
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>L"] = { name = get_icon("ActiveLSP", 1, true) .. "Coding Tools" },
@@ -114,6 +118,8 @@ return {
     ["<leader>x"] = { name = get_icon("DiagnosticHint", 1, true) .. "Trouble" },
     ["<leader>U"] = { name = get_icon("DiagnosticHint", 1, true) .. "Utilities" },
     -- ["<leader>a"] = { "<cmd>echo 'Hello World!'<CR>", desc = "Say Hello" },
+
+    --------------------------------------------------------------------------
     -- Git
     ["<leader>g"] = sections.g,
     ["<leader>ga"] = { "echo Git!!", desc = "顯示 Git" },

@@ -28,13 +28,6 @@ return {
     keys = {
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       -- buffers
-      {
-        "<leader>/",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-        desc = "Grep (root dir)",
-      },
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>bf", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "Buffers" },
       -- code
@@ -81,20 +74,20 @@ return {
         desc = "Goto Symbol (Workspace)",
       },
       -- find
-      {
-        "<leader><space>",
-        function()
-          require("telescope.builtin").find_files {
-            theme = "dropdown",
-          }
-        end,
-        desc = "Find Files",
-      },
-      {
-        "<leader>ff",
-        "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>",
-        desc = "Find Files (root dir)",
-      },
+      -- {
+      --   "<leader><space>",
+      --   function()
+      --     require("telescope.builtin").find_files {
+      --       theme = "dropdown",
+      --     }
+      --   end,
+      --   desc = "Find Files",
+      -- },
+      -- {
+      --   "<leader>ff",
+      --   "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<cr>",
+      --   desc = "Find Files (root dir)",
+      -- },
       {
         "<leader>fF",
         function()

@@ -28,8 +28,10 @@ return {
     },
   },
   { import = "astrocommunity.completion.copilot-lua" },
+  { import = "astrocommunity.completion.copilot-lua-cmp" },
   { -- further customize the options set by the community
     "copilot.lua",
+    -- enabled = false,
     opts = {
       suggestion = {
         keymap = {

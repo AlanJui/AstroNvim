@@ -9,23 +9,29 @@ return {
     config.sources = {
       -- formatting
       null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier,
       null_ls.builtins.diagnostics.pylint.with {
         diagnostics_postprocess = function(diagnostic)
           diagnostic.code = diagnostic.message_id
         end,
       },
-      null_ls.builtins.formatting.isort,
-      null_ls.builtins.diagnostics.pydocstyle.with { extra_args = { "--config=$ROOT/setup.cfg" } },
+      null_ls.builtins.diagnostics.mypy.with {
+        extra_args = { "--config-file", "mypy.ini" },
+      },
+      null_ls.builtins.diagnostics.pydocstyle.with {
+        extra_args = { "--config=$ROOT/setup.cfg" },
+      },
+      null_ls.builtins.diagnostics.flake8.with {
+        diagnostics_format = "#{message} (#{code})",
+      },
       null_ls.builtins.formatting.isort,
       null_ls.builtins.formatting.djhtml,
       null_ls.builtins.formatting.black,
-      -- null_ls.builtins.formatting.autopep8,
+      null_ls.builtins.formatting.autopep8,
       null_ls.builtins.formatting.markdown_toc, -- Markdown
       null_ls.builtins.formatting.markdownlint,
       null_ls.builtins.diagnostics.eslint_d, -- Web Tools
       null_ls.builtins.diagnostics.stylelint,
-      -- null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.prettier.with {
         extra_args = { "--single-quote", "false" },
         filetypes = {
