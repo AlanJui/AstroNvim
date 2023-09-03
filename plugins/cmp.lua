@@ -116,7 +116,7 @@ return {
       },
     }
   end,
-  config = function(plugin, opts)
+  config = function(plugin, opts) -- luacheck: ignore
     local cmp = require "cmp"
     -- run cmp setup
     cmp.setup(opts)
