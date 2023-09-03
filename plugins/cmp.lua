@@ -12,6 +12,7 @@ return {
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/cmp-treesitter",
   },
+  keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
   opts = function()
     local cmp = require "cmp"
     local snip_status_ok, luasnip = pcall(require, "luasnip")
@@ -36,7 +37,7 @@ return {
       preselect = cmp.PreselectMode.None,
       formatting = {
         fields = { "kind", "abbr", "menu" },
-        format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil, -- luacheck: ignore
+        format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
       },
       snippet = {
         expand = function(args)
@@ -97,7 +98,16 @@ return {
         { name = "nvim_lsp", priority = 1000 },
         { name = "nvim_lua", priority = 800 },
         { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
+        -- { name = "buffer", priority = 500 },
+        {
+          name = "buffer",
+          priority = 500,
+          option = {
+            get_bufnrs = function()
+              return vim.api.nvim_list_bufs()
+            end,
+          },
+        },
         { name = "path", priority = 250 },
         { name = "calc", priority = 200 },
         { name = "emoji", priority = 100 },
@@ -105,5 +115,31 @@ return {
         { name = "nvim_lsp_signature_help", priority = 10 },
       },
     }
+  end,
+  config = function(plugin, opts)
+    local cmp = require "cmp"
+    -- run cmp setup
+    cmp.setup(opts)
+
+    -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
+    cmp.setup.cmdline("/", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "buffer" },
+      },
+    })
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = "path" },
+      }, {
+        {
+          name = "cmdline",
+          option = {
+            ignore_cmds = { "Man", "!" },
+          },
+        },
+      }),
+    })
   end,
 }

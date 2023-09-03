@@ -41,6 +41,7 @@ return {
         "shellcheck",
         "shfmt",
         -- Lua Script
+        "luacheck",
         "stylua",
         -- Python
         "pylint",
