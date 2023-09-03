@@ -35,6 +35,9 @@ return {
         return vim.g.cmp_enabled
       end,
       preselect = cmp.PreselectMode.None,
+      completion = {
+        completeopt = "menu,menuone,noinsert",
+      },
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
