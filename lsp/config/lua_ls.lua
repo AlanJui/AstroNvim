@@ -21,7 +21,12 @@ return {
       },
       diagnostics = {
         globals = { "vim", "hs", "astronvim" },
-        disable = { "lowercase-global", "unused-local", "missing-fields" },
+        disable = {
+          "lowercase-global",
+          "unused-local",
+          "missing-fields",
+          "undefined-doc-name",
+        },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

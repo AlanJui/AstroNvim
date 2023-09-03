@@ -1,5 +1,17 @@
 return {
   {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "folke/tokyonight.nvim",
     name = "tokyonight",
     lazy = false,
@@ -31,26 +43,14 @@ return {
       --- You can override specific color groups to use other groups or a hex color
       --- function will be called with a ColorScheme table
       ---@param colors ColorScheme
-      on_colors = function(colors) end,
+      on_colors = function(colors) end, -- luacheck: ignore
 
       --- You can override specific highlights to use other groups or a hex color
       --- function will be called with a Highlights and ColorScheme table
       ---@param highlights Highlights
       ---@param colors ColorScheme
-      on_highlights = function(highlights, colors) end,
+      on_highlights = function(highlights, colors) end, -- luacheck: ignore
     },
-  },
-  {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
-    lazy = false,
-    priority = 1000,
   },
   {
     "catppuccin/nvim",
