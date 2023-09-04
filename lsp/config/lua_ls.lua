@@ -26,6 +26,7 @@ return {
           "unused-local",
           "missing-fields",
           "undefined-doc-name",
+          "assign-type-mismatch",
         },
       },
       workspace = {

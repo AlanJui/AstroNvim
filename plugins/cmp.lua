@@ -13,21 +13,26 @@ return {
     "ray-x/cmp-treesitter",
   },
   keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
-  opts = function()
+  config = function()
     local cmp = require "cmp"
     local snip_status_ok, luasnip = pcall(require, "luasnip")
     local lspkind_status_ok, lspkind = pcall(require, "lspkind")
     if not snip_status_ok then
       return
     end
-    local border_opts = { border = "single", winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None" }
 
-    local function has_words_before()
+    local border_opts = {
+      border = "single",
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+    }
+
+    local has_words_before = function()
+      unpack = unpack or table.unpack -- luacheck: globals unpack (compatibility with Lua 5.1)
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
     end
 
-    return {
+    cmp.setup {
       enabled = function()
         if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
           return false
@@ -69,12 +74,11 @@ return {
         ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        -- ["<C-y>"] = cmp.config.disable,
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-y>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
+        ["<C-e>"] = cmp.mapping.abort(),
+        -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = cmp.mapping.confirm { select = false },
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -118,30 +122,31 @@ return {
         { name = "nvim_lsp_signature_help", priority = 10 },
       },
     }
-  end,
-  config = function(plugin, opts) -- luacheck: ignore
-    local cmp = require "cmp"
-    -- run cmp setup
-    cmp.setup(opts)
 
-    -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
-    cmp.setup.cmdline("/", {
+    -- Set configuration for specific filetype.
+    cmp.setup.filetype("gitcommit", {
+      sources = cmp.config.sources({
+        { name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+      }, {
+        { name = "buffer" },
+      }),
+    })
+
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
         { name = "buffer" },
       },
     })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "path" },
       }, {
-        {
-          name = "cmdline",
-          option = {
-            ignore_cmds = { "Man", "!" },
-          },
-        },
+        { name = "cmdline" },
       }),
     })
   end,
