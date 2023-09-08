@@ -61,7 +61,11 @@ return {
         config = require "user.plugins.debugging.python",
       },
       -- JavaScript adapter
-      {
+      { -- Debugger for DAP
+        "microsoft/vscode-js-debug",
+        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+      },
+      { -- Plugin for DAP in Neovim to use VSCode's JavaScript debugger
         "mxsdev/nvim-dap-vscode-js",
         keys = {},
         config = require "user.plugins.debugging.js",
